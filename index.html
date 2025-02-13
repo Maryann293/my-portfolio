@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryann Ngigi- Portfolio</title>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #FFFFFF;
+            line-height: 1.8;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        /* Menu Button */
+        #menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #menu-btn:hover {
+            background: #39FF14;
+            transform: scale(1.1);
+        }
+
+        /* Sidebar Navigation */
+        #dashboard {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: #111;
+            color: white;
+            padding: 25px;
+            display: none;
+            z-index: 999;
+            box-shadow: 2px 0 5px rgba(0, 255, 255, 0.3);
+            font-size: 20px;
+        }
+
+        #dashboard ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #dashboard ul li {
+            padding: 15px;
+            cursor: pointer;
+            background: #FFFFFF;
+            color: #000;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            text-align: center;
+            transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        #dashboard ul li:hover {
+            background: #39FF14;
+            color: #000;
+            transform: translate(5px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 20px;
+            padding: 25px;
+        }
+
+        section {
+            background: #111;
+            padding: 40px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        section:hover {
+            transform: translate(-5px);
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.5);
+        }
+
+        h2 {
+            color: #00FFFF;
+            border-left: 6px solid #007BFF;
+            padding-left: 12px;
+            font-size: 26px;
+        }
+
+        .bold-large {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #39FF14;
+        }
+
+        a {
+            color: #00FFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 20px;
+        }
+
+        a:hover {
+            color: #39FF14;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Profile Picture Styling */
+        .profile-pic-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00FFFF;
+            box-shadow: 0 5px 12px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #222;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .skill-item i {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .skill-item {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skill-item {
+                flex: 1 1 100%;
+            }
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 255, 255, 0.5);
+        }
+
+        .project-item h3 {
+            color: #00FFFF;
+        }
+
+        .project-item a {
+            color: #39FF14;
+            font-weight: bold;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .review-item {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .review-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 255, 255, 0.5);
+        }
+
+        .review-item p {
+            margin: 0;
+        }
+
+        .review-item strong {
+            color: #39FF14;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-info a {
+            color: #00FFFF;
+            margin: 0 20px; /* Increased margin for spacing */
+            font-size: 40px; /* Increased font size for larger icons */
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #39FF14;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Button -->
+    <button id="menu-btn">☰ Menu</button>
+
+    <!-- Sidebar Navigation -->
+    <aside id="dashboard">
+        <ul>
+            <li onclick="scrollToSection('about')">About</li>
+            <li onclick="scrollToSection('skills')">Skills</li>
+            <li onclick="scrollToSection('projects')">Projects</li>
+            <li onclick="scrollToSection('reviews')">Reviews</li>
+            <li onclick="scrollToSection('contact')">Contact</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <section id="about">
+            <h2>About Me</h2>
+            <img src="\imagesprofile.jpg" alt="Maryann Ngigi" class="profile-pic">
+            <p class="bold-large">Hi, I'm Maryann Ngigi, Software Developer</p>
+            <p>I'm a passionate software developer with a strong foundation in JavaScript, Python, C#, C++, HTML, and SQL. I specialize in building efficient, scalable, and user-friendly applications that solve real-world problems.</p>
+            <p>With 3 years of experience, I have worked on projects ranging from web applications to software solutions, always focusing on clean code, performance optimization, and intuitive user experiences.</p>
+            <p>When I'm not coding, you'll find me exploring the latest tech trends, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-item"><i class="fa-brands fa-html5" style="color:#E44D26;"></i> HTML5</div>
+                <div class="skill-item"><i class="fa-brands fa-css3-alt" style="color:#264de4;"></i> CSS3</div>
+                <div class="skill-item"><i class="fa-brands fa-js" style="color:#F7DF1E;"></i> JavaScript</div>
+                <div class="skill-item"><i class="fa-brands fa-react" style="color:#61DAFB;"></i> React</div>
+                <div class="skill-item"><i class="fa-brands fa-node" style="color:#68A063;"></i> Node.js</div>
+                <div class="skill-item"><i class="fa-brands fa-python" style="color:#3776AB;"></i> Python</div>
+                <div class="skill-item"><i class="fa-solid fa-database" style="color:#00758F;"></i> MySQL</div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-container">
+                <div class="project-item">
+                    <h3>Delegate Management System</h3>
+                    <p>A web-based system designed to streamline event delegate registration, communication, and management.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-item">
+                    <h3>School Attendance System</h3>
+                    <p>An automated attendance tracking system that ensures accurate record-keeping for students.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-item">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio website showcasing my skills, projects, and experience in web development.</p>
+                    <a href="#">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <p>See what people have to say about my work:</p>
+            <div class="reviews-container">
+                <div class="review-item">
+                    <p><strong>John Doe</strong>: "Maryann is an exceptional developer! Her problem-solving skills are top-notch."</p>
+                </div>
+                <div class="review-item">
+                    <p><strong>Jane Smith</strong>: "A truly talented and innovative software engineer. Highly recommended!"</p>
+                </div>
+                <div class="review-item">
+                    <p><strong>Michael Johnson</strong>: "Working with Maryann has been an absolute pleasure. She delivers quality work on time."</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="container">
+                <section id="contact">
+                    <h2>Contact Me</h2>
+                    <div class="contact-info">
+                        <a href="tel:0713005817" title="Call"><i class="fa-solid fa-phone"></i></a>
+                        <a href="sms:0713005817" title="Send SMS"><i class="fa-solid fa-comment-dots"></i></a>
+                        <a href="https://wa.me/254713005817" target="_blank" title="Send WhatsApp Message"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:maryannngig1@gmail.com" title="Send Email"><i class="fa-solid fa-envelope" style="color: #D44638;"></i></a>
+                    </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Maryann Ngigi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("menu-btn").addEventListener("click", function () {
+            let dashboard = document.getElementById("dashboard");
+            dashboard.style.display = dashboard.style.display === "block" ? "none" : "block";
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+
+</body>
+</html>
